@@ -33,11 +33,10 @@ describe('extractErrorsWithPath', () => {
     const result = codec.decode(wrongTypeCarName)
     if (result._tag === 'Left') {
       const extracted = extractErrorsWithPath(result.left)
-      expect(extracted).toBe([
+      expect(extracted).toStrictEqual([
         { path: 'thing.vehicles.0.name', expected: 'string', found: 5 },
         { path: 'thing.someTuple.0', expected: 'string', found: 100 },
       ])
-      console.log(extractErrorsWithPath(result.left))
     }
   })
 })
