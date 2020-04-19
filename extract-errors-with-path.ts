@@ -1,6 +1,6 @@
 import { Errors } from 'io-ts'
 
-const extractErrorsWithPath = (errors: Errors) => {
+const extractErrorsWithPath = (topObjectName: string, errors: Errors) => {
   return errors.map((error) => {
     const context = error.context
     const path = context.reduce((acc, context) => {
@@ -13,7 +13,7 @@ const extractErrorsWithPath = (errors: Errors) => {
       )
         return acc
       return `${acc}.${context.key}`
-    }, 'thing')
+    }, topObjectName)
     const lastContext = context[context.length - 1]
     return { path, expected: lastContext.type.name, found: lastContext.actual }
   })
