@@ -19,4 +19,6 @@ const extractErrorsWithPath = (topObjectName: string, errors: Errors) => {
   })
 }
 
+console.log('hello world')
+
 export default extractErrorsWithPath
